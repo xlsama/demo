@@ -13,7 +13,8 @@ const scaleMap = [
     },
     {
         value: 90,
-        color: 'hotpink'
+        color: 'orange'
+
     },
     {
         value: 120,
@@ -24,8 +25,12 @@ const scaleMap = [
         color: 'purple'
     },
     {
+        value: 160,
+        color: 'skyblue'
+    },
+    {
         value: 200,
-        color: 'pink'
+        color: 'hotpink'
     },
 ]
 
@@ -35,6 +40,7 @@ const textInput = document.querySelector('.text-input')
 const rangeInput = document.querySelector('.range-input')
 const maxValue = Math.max(...scaleMap.map(item => item.value))
 const minValue = Math.min(...scaleMap.map(item => item.value))
+const defaultValue = maxValue / 2
 
 scaleMap.forEach(scale => {
     addScale(scale)
@@ -43,12 +49,18 @@ scaleMap.forEach(scale => {
 initInput()
 
 textInput.oninput = function (e) {
-    setPointerStyle(e.target.value)
+    setInputValue(e.target.value)
 
 }
 
 rangeInput.oninput = function (e) {
-    setPointerStyle(e.target.value)
+    setInputValue(e.target.value)
+}
+
+function setInputValue(value) {
+    textInput.value = value
+    rangeInput.value = value
+    setPointerStyle(value)
 }
 
 function setPointerStyle(value) {
@@ -81,8 +93,10 @@ function calcPointerDeg(value) {
 function initInput() {
     textInput.max = maxValue
     textInput.min = minValue
+    textInput.value = defaultValue
     rangeInput.max = maxValue
     rangeInput.min = minValue
+    rangeInput.value = defaultValue
 }
 
 

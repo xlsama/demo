@@ -19,7 +19,7 @@ body{
   position: relative;
 }
 .scale{
-  width: 40px;
+  width: 20px;
   height: 2px;
   background-color:#ccc;
   transform-origin: 200px;
