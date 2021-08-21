@@ -14,7 +14,6 @@ const scaleMap = [
     {
         value: 90,
         color: 'orange'
-
     },
     {
         value: 120,
@@ -41,6 +40,9 @@ const rangeInput = document.querySelector('.range-input')
 const maxValue = Math.max(...scaleMap.map(item => item.value))
 const minValue = Math.min(...scaleMap.map(item => item.value))
 const defaultValue = maxValue / 2
+// 仪表盘可以旋转的度数
+// const gaugeRotateDeg = 180 + (parseInt(window.getComputedStyle(pointer).bottom) * 2)
+// console.log(parseInt(window.getComputedStyle(pointer).bottom), gaugeRotateDeg);
 
 scaleMap.forEach(scale => {
     addScale(scale)
@@ -50,7 +52,6 @@ initInput()
 
 textInput.oninput = function (e) {
     setInputValue(e.target.value)
-
 }
 
 rangeInput.oninput = function (e) {
@@ -65,17 +66,16 @@ function setInputValue(value) {
 
 function setPointerStyle(value) {
     value = +value
-    console.log(value);
     pointer.style.transform = `rotate(${calcPointerDeg(value)}deg)`
-    const scale = scaleMap.find(item => item.value === value)
-    scale && (pointer.style.backgroundColor = scale.color)
+    const scale = scaleMap.find(item => item.value >= value)
+    scale && (pointer.style.setProperty('--color', scale.color))
 }
 
 function addScale({ value, color }) {
     const scale = document.createElement('div')
     scale.classList.add('scale')
     scale.style.transform = `rotate(${calcSacleDeg(value)}deg)`
-    scale.style.backgroundColor = color
+    scale.style.setProperty('--color', color)
     gauge.append(scale)
 }
 
@@ -93,10 +93,9 @@ function calcPointerDeg(value) {
 function initInput() {
     textInput.max = maxValue
     textInput.min = minValue
-    textInput.value = defaultValue
     rangeInput.max = maxValue
     rangeInput.min = minValue
-    rangeInput.value = defaultValue
+    setInputValue(defaultValue)
 }
 
 

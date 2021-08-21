@@ -21,7 +21,9 @@ body{
 .scale{
   width: 20px;
   height: 2px;
-  background-color:#ccc;
+  background-color:var(--color);
+  box-shadow: var(--color);
+  transition: background-color 0.5s,box-shadow 0.5s;
   transform-origin: 200px;
   position: absolute;
   bottom: 0;
@@ -29,11 +31,13 @@ body{
 .pointer{
   width: 100px;
   height: 2px;
-  background-color: red;
+  background-color: var(--color);
   position: absolute;
   left: 25%;
-  bottom: 50px;
-  box-shadow: 0 0 15px red;
+  bottom: 0;
+  /* bottom: 50px; */
+  box-shadow: 0 0 15px var(--color);
+  transition: background-color 0.5s ease-in-out,box-shadow 0.5s ease-in-out;
   transform-origin: 100px;
   transform: rotate(0deg);
 }
@@ -43,7 +47,8 @@ body{
   height: 15px;
   background-color: #333;
   border-radius: 50%;
-  top: 142px;
+  bottom: -6px;
+  /* top: 142px; */
   left: 193px;
 }
 
