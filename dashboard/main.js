@@ -1,36 +1,29 @@
 const scaleMap = [
     {
         value: 0,
-        color: '#fff'
-    },
-    {
-        value: 30,
         color: 'red'
     },
     {
-        value: 70,
+        value: 19,
         color: 'blue'
     },
     {
-        value: 90,
-        color: 'orange'
-    },
-    {
-        value: 120,
+        value: 59,
         color: 'yellow'
     },
     {
-        value: 140,
-        color: 'purple'
-    },
-    {
-        value: 160,
-        color: 'skyblue'
+        value: 119,
+        color: 'hotpink'
     },
     {
         value: 200,
-        color: 'hotpink'
+        color: 'skyblue'
     },
+    {
+        value: 139,
+        color: 'orange'
+    },
+
 ]
 
 const gauge = document.querySelector('.gauge')
@@ -67,7 +60,9 @@ function setInputValue(value) {
 function setPointerStyle(value) {
     value = +value
     pointer.style.transform = `rotate(${calcPointerDeg(value)}deg)`
-    const scale = scaleMap.find(item => item.value >= value)
+
+    scaleMap.sort((a, b) => b.value - a.value)
+    const scale = scaleMap.find(item => item.value <= value)
     scale && (pointer.style.setProperty('--color', scale.color))
 }
 
