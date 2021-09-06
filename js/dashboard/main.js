@@ -34,7 +34,8 @@ const maxValue = Math.max(...scaleMap.map(item => item.value))
 const minValue = Math.min(...scaleMap.map(item => item.value))
 const defaultValue = maxValue / 2
 // 仪表盘可以旋转的度数
-// const gaugeRotateDeg = 180 + (parseInt(window.getComputedStyle(pointer).bottom) * 2)
+const gaugeRotateDeg = 180 + (parseInt(window.getComputedStyle(pointer).bottom))
+console.log(gaugeRotateDeg);
 // console.log(parseInt(window.getComputedStyle(pointer).bottom), gaugeRotateDeg);
 
 scaleMap.forEach(scale => {

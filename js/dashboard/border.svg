@@ -1,0 +1,5 @@
+<svg>
+ <path d="M100 100, A120 120, -45 0 1, 300 300 A120 120, -45 0 1, 100 100"
+  stroke="#05D380" stroke-width="2"
+  fill="none"/>
+</svg>
