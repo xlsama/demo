@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 const todos = ref([
   { id: 1, content: '吃屎' },
-  { id: 2, content: '睡觉' }
+  { id: 2, content: '熬夜' }
 ])
 const value = ref('')
 

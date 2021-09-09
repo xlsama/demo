@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改input的type="range"的默认样式</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      input {
+        transform: rotate(-90deg);
+        width: 150px;
+        height: 20px;
+        transform-origin: 75px 75px;
+        border-radius: 15px;
+        -webkit-appearance: none;
+        outline: none;
+        position: relative;
+        left: 50%;
+        top: 100px;
+      }
+      input::after {
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        border: 5px solid transparent;
+        border-right: 150px solid #00ccff;
+        border-left-width: 0;
+        position: absolute;
+        left: 0;
+        top: 5px;
+        border-radius: 15px;
+        z-index: 0;
+      }
+      input[type='range']::-webkit-slider-thumb,
+      input[type='range']::-moz-range-thumb {
+        -webkit-appearance: none;
+      }
+      input[type='range']::-webkit-slider-runnable-track,
+      input[type='range']::-moz-range-track {
+        height: 10px;
+        border-radius: 10px;
+        box-shadow: none;
+      }
+      input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 20px;
+        width: 20px;
+        margin-top: -1px;
+        background: #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #00ccff;
+        position: relative;
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="range" min="0" max="100" step="1" value="50" />
+  </body>
+</html>
